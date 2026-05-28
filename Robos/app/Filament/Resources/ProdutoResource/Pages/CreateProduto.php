@@ -15,9 +15,15 @@ class CreateProduto extends CreateRecord
     protected function beforeCreate(): void
     {
        $data = $this->data;
+       $estoque = Estoque::find(2);
 
-       $quantidade_minima = Estoque::find($data['nivel_minimo']);
-       $quantidade = (int)$data['quantidade'];
+        if ($estoque) {
+            $quantidade_minima = $estoque->nivel_minimo;
+        } else {
+            $quantidade_minima = null; 
+        }
+       
+        $quantidade = $data['quantidade'];
 
        if($quantidade < $quantidade_minima){
             Notification::make()

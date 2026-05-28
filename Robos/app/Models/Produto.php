@@ -11,6 +11,7 @@ class Produto extends Model
     ];
 
     public function Estoque(){
-        return $this->hasMany(Estoque::class);
+        return $this->belongsTo(Estoque::class);
     }
+
 }
