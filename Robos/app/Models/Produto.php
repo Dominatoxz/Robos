@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Produto extends Model
 {
     protected $fillable = [
-        'numero_serie', 'compatibilidade', 'tempo_vida', 'loc', 'quantidade',
+        'produto_id','numero_serie', 'compatibilidade', 'tempo_vida', 'loc', 'quantidade',
     ];
 
     public function Estoque(){
-        return $this->belongsTo(Estoque::class);
+        return $this->belongsTo(Estoque::class, 'robo_id');
     }
 
 }

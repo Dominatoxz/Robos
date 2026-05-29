@@ -13,9 +13,10 @@ class CreateProduto extends CreateRecord
     protected static string $resource = ProdutoResource::class;
 
     protected function beforeCreate(): void
-    {
+    {   
        $data = $this->data;
-       $estoque = Estoque::find(2);
+       $id = $data['produto_id'];
+       $estoque = Estoque::find($id);
 
         if ($estoque) {
             $quantidade_minima = $estoque->nivel_minimo;
@@ -34,4 +35,5 @@ class CreateProduto extends CreateRecord
         $this->halt();
         }
     }
+    
 }

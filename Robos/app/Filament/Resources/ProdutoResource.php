@@ -23,6 +23,10 @@ class ProdutoResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('produto_id')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
                 Forms\Components\TextInput::make('numero_serie')
                     ->required()
                     ->numeric()
@@ -47,6 +51,9 @@ class ProdutoResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('produto_id')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('numero_serie')
                     ->numeric()
                     ->sortable(),
